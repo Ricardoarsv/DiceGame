@@ -73,3 +73,16 @@
         font-size: 1.2em;
     }
   }
+
+@media only screen and (max-width: 768px) {
+    .container{
+        margin: 40% 8%;
+        width: 80%;
+    }
+    #mensaje{
+        top: 46%;
+        left: 28%;
+        max-width: 400px;
+        font-size: 2em;
+    }
+}
