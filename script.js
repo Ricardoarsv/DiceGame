@@ -5,20 +5,26 @@ const jugar = document.getElementById("jugar");
 const mensaje = document.getElementById("mensaje");
 
 let saldoActual = 50000;
+let animacionEnProgreso = false;
 
 function lanzarDado() {
-    const numero = Math.floor(Math.random() * 6) + 1;
-    const dadoImg = document.getElementById('dice');
-    dadoImg.classList.add('animate');
-    setTimeout(function() {
-      dadoImg.src = `./images/dado-${numero}.png`;
-      dadoImg.classList.remove('animate');
-    }, 1000);
-    return numero;
-  }
+  const numero = Math.floor(Math.random() * 6) + 1;
+  const dadoImg = document.getElementById('dice');
+  dadoImg.classList.add('animate');
+  animacionEnProgreso = true;
+  setTimeout(function() {
+    dadoImg.src = `./images/dado-${numero}.png`;
+    dadoImg.classList.remove('animate');
+    animacionEnProgreso = false;
+  }, 1000);
+  return numero;
+}
 
 function jugarDados(e) {
   e.preventDefault();
+  if (animacionEnProgreso || jugar.disabled) {
+    return;
+  }
   const apuestaValor = parseInt(apuesta.value);
   const numeroValor = parseInt(numero.value);
   if (apuestaValor > saldoActual) {
@@ -45,3 +51,5 @@ function jugarDados(e) {
 }
 
 jugar.addEventListener("click", jugarDados);
+jugar.type = 'button';
+jugar.disabled = false;
