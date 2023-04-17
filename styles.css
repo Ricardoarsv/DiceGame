@@ -59,4 +59,17 @@
     font-size: 1.5em;
     margin-top: 50px;
   }
-  
+
+@media only screen and (max-width: 600px) {
+    .container{
+        margin: 200px 8%;
+        width: 80%;
+    }
+
+    #mensaje{
+        top: 43.5%;
+        left: 45%;
+        max-width: 160px;
+        font-size: 1.2em;
+    }
+  }
